@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    background: #101010e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+button{
+    display: block;
+    color: #fff;
+    font-size: 40px;
+    background: linear-gradient(to right, #444, #666);
+    border: 2px solid #eee;
+    margin: auto;
+    padding: 8px 18px;
+    border-radius: 12px;
+    box-shadow: -1px 1px 3px rgba(255,255,255,0.3);
+}
+
+button:hover{
+    background: linear-gradient(to right, #222, #444);
+    cursor: pointer;
+}
