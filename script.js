@@ -3,7 +3,7 @@ Requirements for this project:
 1. Create HTML page (check!)
 2. Write logic to get computer choice (check!)
 3. Write logic to get human choice (check!)
-4. Declare score variables and enable them to track score to best of 5 (check!)
+4. Declare score variables and enable them to track scores (check!)
 5. Write logic to play a round (check!)
 6. Write logic to play the entire game (check!)
 
