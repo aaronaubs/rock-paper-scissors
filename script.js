@@ -3,9 +3,9 @@ Requirements for this project:
 1. Create HTML page (check!)
 2. Write logic to get computer choice (check!)
 3. Write logic to get human choice (check!)
-4. Declare score variables and enable them to track score to best of 5
+4. Declare score variables and enable them to track score to best of 5 (check!)
 5. Write logic to play a round (check!)
-6. Write logic to play the entire game
+6. Write logic to play the entire game (check!)
 
 */
 //Declare a global variable called computerChoice
@@ -25,7 +25,6 @@ function getComputerChoice() {
     } else {
         computerChoice = "scissors";
     }
-    console.log(computerChoice);
     return computerChoice;
 }
 
@@ -38,45 +37,53 @@ function getHumanChoice() {
     //set humanChoice to equal a lowercased version of the user input
     humanChoice = userInput.toLowerCase();
     //log the lowercased input to the console
-    console.log(humanChoice);
     return humanChoice;
 }
+
+
 
 //Define playGame function
 function playGame() {
     //declare variables to track the human score and computer score
     let humanScore = 0;
     let computerScore = 0;
-
-    //Define a function to play a single round of rock, paper scissors
-    function playRound(humanChoice, computerChoice) {
-        //check whether the round has ended in a draw
-        if (humanChoice === computerChoice) {
-            console.log(`You both chose ${humanChoice}. It's a draw!`)
-        //if not a draw, check whether the user beat the computer
-        } else if (
-            (humanChoice === "rock" && computerChoice === "scissors") ||
-            (humanChoice === "paper" && computerChoice === "rock") ||
-            (humanChoice === "scissors" && computerChoice === "paper")
-        ) {
-            //announce the user's victory
-            console.log(`You win, ${humanChoice} beats ${computerChoice}!`);
-            //increase user score by 1
-            humanScore++;
-        //if the user did not win, announce that the user lost
-        } else {
-            console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
-            //increase computer score by 1
-            computerScore++;
+    
+    //while loop the game so it repeats until one side gets to 5 points
+    while (humanScore < 5 && computerScore < 5) {
+        //Define a function to play a single round of rock, paper scissors
+        function playRound(humanChoice, computerChoice) {
+            //check whether the round has ended in a draw
+            if (humanChoice === computerChoice) {
+                console.log(`You both chose ${humanChoice}. It's a draw!`);
+                console.log(`The score is still Player: ${humanScore} to Computer: ${computerScore}.`)
+            //if not a draw, check whether the user beat the computer
+            } else if (
+                (humanChoice === "rock" && computerChoice === "scissors") ||
+                (humanChoice === "paper" && computerChoice === "rock") ||
+                (humanChoice === "scissors" && computerChoice === "paper")
+            ) {
+                //announce the user's victory
+                console.log(`You win, ${humanChoice} beats ${computerChoice}!`);
+                //increase user score by 1
+                humanScore++;
+                console.log(`The score is now Player: ${humanScore} to Computer: ${computerScore}.`)
+            //if the user did not win, announce that the user lost
+            } else {
+                console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
+                //increase computer score by 1
+                computerScore++;
+                console.log(`The score is now Player: ${humanScore} to Computer: ${computerScore}.`)
+            }
         }
-        //increment the user score if they won (the value is true)
-        if ()
-        //announce the score at the end of the round
-        console.log(`The score is now Player: ${humanScore} to Computer: ${computerScore}.`)
+
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+            
+        playRound(humanSelection, computerSelection);  
     }
-
-    let humanSelection = getHumanChoice();
-    let computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);    
+    if (humanScore === 5) {
+        console.log("You win the game!");
+    } else {
+        console.log("You lose! Better luck next time.");
+    }
 }
