@@ -1,25 +1,28 @@
-body{
+*{
     margin: 0;
-    background: #101010e5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body{    
     height: 100vh;
+    width: 100%;
+    display: flex;
 }
 
 button{
-    display: block;
-    color: #fff;
+    color: #000;
     font-size: 40px;
-    background: linear-gradient(to right, #444, #666);
-    border: 2px solid #eee;
+    background: #ccc;
+    border: 4px solid #333;
     margin: auto;
     padding: 8px 18px;
     border-radius: 12px;
-    box-shadow: -1px 1px 3px rgba(255,255,255,0.3);
+    box-shadow: -2px 2px 4px rgba(0,0,0,0.3);
 }
 
 button:hover{
-    background: linear-gradient(to right, #222, #444);
+    background: #bbb;
     cursor: pointer;
 }
