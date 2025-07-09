@@ -13,29 +13,29 @@
             <button id="startGame" onclick="playGame()">Start Game</button>
         </header>
         <main id="gameWindow">
-            <h2 id="roundDisplay">Round <span id="roundCounter" data-round="1">1</span></h2>
+            <h2 id="roundDisplay">Round <span id="roundCounter" data-value="1">1</span></h2>
             <p id="commandMessage">Please choose rock, paper or scissors</p>
             <div class="row-one-container">
                 <div class="scorebox">
-                    <div class="scorecard" id="playerScore" data-score="0">0</div>
+                    <div class="scorecard" id="playerScorecard" data-value="0">0</div>
                     <p class="scorecard-name">Player Score</p>
                 </div> 
-                <div class="game-choice-cards">
+                <div class="game-choice-cards" id="gameChoices">
                     <div class="card rock">
-                        <img src="#" alt="a rock">
-                        <button id="rockBtn">Rock</button>
+                        <!-- <img src="#" alt="a rock"> -->
+                        <button class="choice" id="rock">Rock</button>
                     </div>
                     <div class="card paper">
-                        <img src="#" alt="paper">
-                        <button id="paperBtn">Paper</button>
+                       <!-- <img src="#" alt="paper"> -->
+                        <button class="choice" id="paper">Paper</button>
                     </div>
                     <div class="card scissors">
-                        <img src="#" alt="scissors">
-                        <button id="scissorsBtn">Scissors</button>
+                       <!-- <img src="#" alt="scissors"> -->
+                        <button class="choice" id="scissors">Scissors</button>
                     </div>
                 </div>
                 <div class="scorebox">
-                    <div class="scorecard" id="computerScore" data-score="0">0</div>
+                    <div class="scorecard" id="computerScorecard" data-value="0">0</div>
                     <p class="scorecard-name">Computer Score</p>
                 </div> 
             </div>
