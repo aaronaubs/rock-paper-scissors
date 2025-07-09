@@ -8,9 +8,46 @@
         <title>Rock Paper Scissors Console Game</title>
     </head>
     <body>
+        <header>
+            <h1>Rock-Paper-Scissors Game</h1>
+            <button id="startGame" onclick="playGame()">Start Game</button>
+        </header>
+        <main id="gameWindow">
+            <h2 id="roundDisplay">Round <span id="roundCounter" data-round="1">1</span></h2>
+            <p id="commandMessage">Please choose rock, paper or scissors</p>
+            <div class="row-one-container">
+                <div class="scorebox">
+                    <div class="scorecard" id="playerScore" data-score="0">0</div>
+                    <p class="scorecard-name">Player Score</p>
+                </div> 
+                <div class="game-choice-cards">
+                    <div class="card rock">
+                        <img src="#" alt="a rock">
+                        <button id="rockBtn">Rock</button>
+                    </div>
+                    <div class="card paper">
+                        <img src="#" alt="paper">
+                        <button id="paperBtn">Paper</button>
+                    </div>
+                    <div class="card scissors">
+                        <img src="#" alt="scissors">
+                        <button id="scissorsBtn">Scissors</button>
+                    </div>
+                </div>
+                <div class="scorebox">
+                    <div class="scorecard" id="computerScore" data-score="0">0</div>
+                    <p class="scorecard-name">Computer Score</p>
+                </div> 
+            </div>
+            <div id="gameStatusDisplay">
+                <!--paragraph tags will be appended here! -->
+                                
+            </div>
+        </main>
+        <footer>
+            <p>I hope you have fun playing!</p>
+        </footer>
 
-        <button onclick="playGame()">Start Game</button>
-        
         <script src="script.js"></script>
     </body>
 </html>
