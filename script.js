@@ -6,6 +6,7 @@ let playerScorecard = document.getElementById("playerScorecard");
 let computerScorecard = document.getElementById("computerScorecard");
 let playerScore = playerScorecard.dataset.value;
 let computerScore = computerScorecard.dataset.value;
+let roundCounter = document.getElementById("roundCounter");
 
 function appendParagraph(text) {
     let para = document.createElement("p");
@@ -22,18 +23,23 @@ function getComputerChoice() {
     if (randomNumber === 0) computerChoice = "rock";
     if (randomNumber === 1) computerChoice = "paper";
     if (randomNumber === 2) computerChoice = "scissors";
-    appendParagraph(`The computer chose ${computerChoice}.`);
+    appendParagraph(`Computer choice: ${computerChoice}.`);
     return computerChoice;
 }
 
+function appendSpan() {
+    let span = document.createElement("span");
+    span.classList.add("line");
+    gameStatusDisplay.appendChild(span);
+}
 
 function determineRoundWinner() {
-    let roundCounter = document.getElementById("roundCounter");
     roundCounter.dataset.value++;
     roundCounter.textContent = roundCounter.dataset.value;
 
     if (playerChoice === computerChoice) {
         appendParagraph(`It's a draw.`);
+        appendSpan();
     } else if (
         (playerChoice === "rock" && computerChoice === "scissors") ||
         (playerChoice === "paper" && computerChoice === "rock") ||
@@ -42,18 +48,22 @@ function determineRoundWinner() {
         appendParagraph(`You won the round!`);
         playerScore++;
         playerScorecard.textContent = playerScore;
+        appendSpan();
     } else {
         appendParagraph(`You lost the round!`)
         computerScore++;
         computerScorecard.textContent = computerScore;
+        appendSpan();
     }
 }
 
 function checkGameWinner() {
-    if (playerScore === 5) {
-        appendParagraph(`You won the game! Great work!.`)
-    } else if (computerScore === 5) {
+    if (playerScore === 5 && computerScore < 5) {
+        appendParagraph(`You won the game! Great work!`)
+        appendSpan();
+    } else if (computerScore === 5 && playerScore < 5) {
         appendParagraph(`You lost the game... Better luck next time.`)
+        appendSpan();
     } else return;
 }
 
@@ -62,7 +72,7 @@ function playRound() {
     choices.forEach(choice => {
         choice.addEventListener("click", (e) => {
             playerChoice = e.target.id;
-            appendParagraph(`You chose ${playerChoice}.`);
+            appendParagraph(`Your choice: ${playerChoice}.`);
             getComputerChoice();
             determineRoundWinner();
             checkGameWinner();
@@ -71,3 +81,16 @@ function playRound() {
 }
 
 playRound();
+
+let resetBtn = document.getElementById("resetBtn");
+function resetGame() {
+    playerScore = 0;
+    playerScorecard.textContent = playerScore;
+    computerScore = 0;
+    computerScorecard.textContent = computerScore;
+    roundCounter.dataset.value = 1;
+    roundCounter.textContent = roundCounter.dataset.value;
+    while (gameStatusDisplay.firstChild) {
+        gameStatusDisplay.removeChild(gameStatusDisplay.firstChild);
+    }
+}
