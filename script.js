@@ -57,13 +57,17 @@ function determineRoundWinner() {
     }
 }
 
+let hasRun = false;
+
 function checkGameWinner() {
-    if (playerScore === 5 && computerScore < 5) {
+    if (playerScore === 5 && computerScore < 5 && !hasRun) {
         appendParagraph(`You won the game! Great work!`)
         appendSpan();
-    } else if (computerScore === 5 && playerScore < 5) {
+        hasRun = true;
+    } else if (computerScore === 5 && playerScore < 5 && !hasRun) {
         appendParagraph(`You lost the game... Better luck next time.`)
         appendSpan();
+        hasRun = true;
     } else return;
 }
 
@@ -93,4 +97,5 @@ function resetGame() {
     while (gameStatusDisplay.firstChild) {
         gameStatusDisplay.removeChild(gameStatusDisplay.firstChild);
     }
+    hasRun = false;
 }
