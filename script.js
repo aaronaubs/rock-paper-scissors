@@ -7,6 +7,7 @@ let computerScorecard = document.getElementById("computerScorecard");
 let playerScore = playerScorecard.dataset.value;
 let computerScore = computerScorecard.dataset.value;
 let roundCounter = document.getElementById("roundCounter");
+let goalMessage = document.getElementById("goalMessage");
 
 function appendParagraph(text) {
     let para = document.createElement("p");
@@ -63,10 +64,12 @@ function checkGameWinner() {
     if (playerScore === 5 && computerScore < 5 && !hasRun) {
         appendParagraph(`You won the game! Great work!`)
         appendSpan();
+        goalMessage.textContent = "You won, but keep playing as long as you'd like!"
         hasRun = true;
     } else if (computerScore === 5 && playerScore < 5 && !hasRun) {
         appendParagraph(`You lost the game... Better luck next time.`)
         appendSpan();
+        goalMessage.textContent = "You lost, but keep playing as long as you'd like!"
         hasRun = true;
     } else return;
 }
@@ -97,5 +100,6 @@ function resetGame() {
     while (gameStatusDisplay.firstChild) {
         gameStatusDisplay.removeChild(gameStatusDisplay.firstChild);
     }
+    goalMessage.textContent = "First to 5 points wins!";
     hasRun = false;
 }
