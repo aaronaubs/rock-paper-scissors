@@ -10,21 +10,21 @@ def play_round():
     global computer_score
     choices = ["rock", "paper", "scissors"]
 
-    print(" ")
+    print(" ") 
     print(f"--Round {round_count}--")
-    player_choice = input("Please choose rock, paper or scissors").lower()
+    player_choice = input("Please choose rock, paper or scissors. >>").lower()
     while player_choice not in choices:
         print(" ")
-        player_choice = input("Invalid choice. Please try again.")
+        player_choice = input("Invalid choice. Please try again. >>")
 
     computer_choice = random.choice(choices)
-    print(" ")
     print(" ")
     print(f"Computer choice: {computer_choice}")
 
     if player_choice == computer_choice:
         print("It's a draw!")
         print(" ")
+        time.sleep(1)
         print(f"Player: {player_score}, Computer: {computer_score}.")
         return
     elif (
@@ -35,15 +35,17 @@ def play_round():
         print("You win!")
         player_score += 1
         print(" ")
+        time.sleep(1)
         print(f"Player: {player_score}, Computer: {computer_score}.")
         return
     else:
         print("You lose!")
         computer_score += 1
         print(" ")
+        time.sleep(1)
         print(f"Player: {player_score}, Computer: {computer_score}.")
         return
-    
+  
 def play_rps():
     global player_score
     global computer_score
@@ -59,9 +61,7 @@ def play_rps():
     time.sleep(1)
     for i in range(4):
         play_round()
-        print(f"-The next round will start in 3 seconds-")
-        print(" ")
-        time.sleep(3)
+        time.sleep(2)
         global round_count
         round_count += 1
     play_round()
